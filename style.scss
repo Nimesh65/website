@@ -1,0 +1,333 @@
+@import "scss/variables";
+.site-header {
+  background-color: $header-bg;
+  color: $white;
+  padding: 1rem 0;
+
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-title {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .site-nav {
+    a {
+      color: $white;
+      text-decoration: none;
+      margin-left: 0.75rem;
+      position: relative;
+      padding-left: 1.6rem;
+      display: inline-block;
+
+      &::before {
+        content: "";
+        width: 5em;
+        height: 1em;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      &.contact::before {
+        background-image: url("images/telephone-fill.svg");
+      }
+      &.mail::before {
+        background-image: url("images/envelope-at-fill.svg");
+      }
+      &.location::before {
+        background-image: url("images/geo-alt-fill.svg");
+      }
+      &.contact {
+        margin-left: 4rem;
+      }
+      &.mail {
+        margin-left: 5rem;
+      }
+      &.location {
+        margin-left: 15rem;
+      }
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+.main-nav {
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: space-between;
+  gap: 2rem;
+  a {
+    text-decoration: none;
+    color: inherit;
+    padding: 25px;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  img {
+    height: 60px;
+    width: auto;
+  }
+
+  .search-container {
+    form {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    input {
+      width: 220px;
+      padding: 0.5rem 2.5rem 0.5rem 0.75rem; // space for icon
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      font-size: 0.9rem;
+
+      &:focus {
+        outline: none;
+        border-color: #00a261;
+      }
+    }
+    .search-btn {
+      position: absolute;
+      right: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.25rem;
+      height: 1.25rem;
+      background: url("/images/search.svg") no-repeat center;
+      background-size: contain;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .get-quote-button {
+    background-color: $button-bg;
+    color: #000000;
+    border: none;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: darken($button-bg, 15%);
+    }
+  }
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  overflow: hidden;
+
+  .hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  color: black;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 1;
+    max-width: 600px;
+    color: #fff;
+
+    .hero-icon {
+      width: 250px;
+      margin-bottom: -1rem;
+    }
+
+    h1 {
+      color: black;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: black;
+      font-size: 1.5rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      background: $button-bg;
+      color: #000000;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+
+      &:hover {
+        background-color: darken($button-bg, 15%);
+      }
+    }
+  }
+}
+
+.services {
+  padding: 4rem 1rem;
+  display: flex;
+  justify-content: center;
+
+  .services-wrapper {
+    display: flex;
+    gap: 0rem;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .service-card {
+    flex: 1 1 240px;
+    max-width: 260px;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    // border-radius: 8px;
+    text-align: left; // 👈 keeps image top-left
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: -14vh; // 20% of 70vh
+    z-index: 2;
+    background-color: $white;
+
+    img {
+      filter: invert(42%) sepia(92%) saturate(500%) hue-rotate(90deg)
+        brightness(95%) contrast(90%);
+      width: 70px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+    }
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+      background-color: $header-bg;
+      h2 {
+        color: $white;
+      }
+      p {
+        color: $white;
+      }
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+}
+
+
+.about {
+  display: flex;
+  justify-content: center;
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .col-1 {
+    flex: 0 0 40%;
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+    }
+  }
+
+  .col-2 {
+    flex: 1;
+
+    .abt-header {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: $header-bg;
+    }
+
+    span {
+      font-size: 2.5rem;
+      padding: 4rem 1rem;
+      font-weight: 600;
+      color: $black;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .about-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.75rem;
+      background-color: $header-bg;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($header-bg, 15%);
+      }
+    }
+  }
+}
