@@ -65,7 +65,45 @@
   }
 }
 
+@media (max-width: 768px) {
+  .site-header {
+    .container {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 1.5rem;
+    }
 
+    .site-title {
+      margin-bottom: 0.5rem;
+    }
+
+    .site-nav {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      a {
+        margin-left: 0;
+        padding-left: 2rem;
+        font-size: 0.95rem;
+
+        &::before {
+          width: 1.2rem;
+        }
+
+        &.contact,
+        &.mail,
+        &.location {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+
+// nextone
 .about.container {
   padding: 2rem 0;
 }
@@ -75,7 +113,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  a{
+  a {
     margin-right: 2rem;
   }
 }
@@ -163,15 +201,9 @@
   }
 }
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 992px) {
-  .main-nav ul {
-    display: none; // mobile menu later
-  }
-}
 
 
-
+// nextone
 .hero {
   position: relative;
   width: 100%;
@@ -179,6 +211,8 @@
   overflow: hidden;
 
   .hero-bg {
+    position: absolute; // ✅ key fix
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -197,9 +231,9 @@
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
-    z-index: 1;
+    z-index: 2;
     max-width: 600px;
-    color: #fff;
+    color: #000;
 
     .hero-icon {
       width: 250px;
@@ -235,6 +269,37 @@
   }
 }
 
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+  }
+
+  .hero-content {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .hero-icon {
+    width: 160px;
+    margin: 0 auto 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+
+// nextone
 .services {
   padding: 4rem 1rem;
   display: flex;
@@ -296,8 +361,64 @@
     }
   }
 }
+/* ---------- TABLET ---------- */
+@media (max-width: 992px) {
+  .services {
+    padding: 3rem 1rem;
 
+    .service-card {
+      margin-top: -8vh; // reduce overlap
+      max-width: 300px;
+    }
+  }
+}
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .services {
+    padding: 2.5rem 1rem;
 
+    .services-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      margin-top: 0; // ❌ remove overlap
+      max-width: 100%;
+      width: 100%;
+      text-align: left;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+        color: #444;
+      }
+    }
+  }
+}
+
+/* ---------- SMALL MOBILE ---------- */
+@media (max-width: 480px) {
+  .services {
+    .service-card {
+      padding: 1.25rem;
+
+      h2 {
+        font-size: 1.35rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// nextone
 .about {
   display: flex;
   justify-content: center;
@@ -360,8 +481,79 @@
     }
   }
 }
+/* ---------- TABLET ---------- */
+@media (max-width: 992px) {
+  .about {
+    padding-bottom: 6rem;
+
+    .row {
+      gap: 2rem;
+    }
+
+    .col-1 {
+      flex: 0 0 45%;
+    }
+
+    .col-2 span {
+      font-size: 2rem;
+      padding: 2rem 0;
+    }
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .about {
+    padding: 3rem 1rem;
+
+    .row {
+      flex-direction: column;   // ✅ stack image + text
+      text-align: center;
+    }
+
+    .col-1,
+    .col-2 {
+      flex: 100%;
+    }
+
+    .col-1 img {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .col-2 {
+      span {
+        font-size: 1.6rem;
+        padding: 1rem 0;
+        display: block;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .about-btn {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}
+
+/* ---------- SMALL MOBILE ---------- */
+@media (max-width: 480px) {
+  .about {
+    .col-2 span {
+      font-size: 1.4rem;
+    }
+
+    .col-2 p {
+      font-size: 0.9rem;
+    }
+  }
+}
 
 
+// nextone
 .portal {
   padding: 5rem 1rem;
   display: flex;
@@ -449,9 +641,112 @@
     }
   }
 }
+/* ---------- TABLET ---------- */
+@media (max-width: 992px) {
+  .portal {
+    padding: 4rem 1rem;
+
+    .row {
+      gap: 2rem;
+    }
+
+    .col-1 {
+      flex: 0 0 50%;
+    }
+
+    .col-2 {
+      .sub-header {
+        font-size: 1.6rem;
+      }
+
+      .main-header {
+        font-size: 3.5rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+    }
+
+    .features-list li {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .portal {
+    padding: 3rem 1rem;
+
+    .row {
+      flex-direction: column;   // ✅ stack image + content
+      text-align: center;
+    }
+
+    .col-1,
+    .col-2 {
+      flex: 100%;
+    }
+
+    .col-1 img {
+      max-width: 320px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .col-2 {
+      .sub-header {
+        font-size: 1.4rem;
+      }
+
+      .main-header {
+        font-size: 2.4rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .features-list {
+      li {
+        font-size: 1rem;
+        padding-left: 1.5rem;
+        text-align: left; // keep bullets readable
+
+        &::before {
+          top: 0.15rem;
+        }
+      }
+    }
+
+    .portal-btn {
+      margin-top: 1rem;
+    }
+  }
+}
+
+/* ---------- SMALL MOBILE ---------- */
+@media (max-width: 480px) {
+  .portal {
+    .col-2 {
+      .main-header {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    .features-list li {
+      font-size: 0.95rem;
+    }
+  }
+}
 
 
-
+// nextone
 .careers-section {
   background-color: #067758; // light green
   padding: 4rem 1rem;
@@ -566,16 +861,169 @@
     }
   }
 }
+/* ---------- TABLET ---------- */
+@media (max-width: 992px) {
+  .careers-section {
+    padding: 3.5rem 1rem;
 
+    .row {
+      gap: 2rem;
+    }
+
+    /* Top description */
+    .desc-content {
+      .col-1 {
+        .header {
+          font-size: 1.3rem;
+        }
+
+        .sub-header {
+          font-size: 2rem;
+        }
+      }
+
+      .col-2 {
+        margin-left: 0; // remove large offset
+        .desc {
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    /* Main content */
+    .main-content {
+      .col-1 {
+        flex: 0 0 45%;
+      }
+
+      .col-2 {
+        margin-left: 0;
+
+        .d-flex .content-txt {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .careers-section {
+    padding: 3rem 1rem;
+
+    .row {
+      flex-direction: column; // ✅ stack everything
+      text-align: center;
+    }
+
+    /* ---------- TOP DESCRIPTION ---------- */
+    .desc-content {
+      margin-bottom: 2.5rem;
+
+      .row {
+        flex-direction: column;
+      }
+
+      .col-1,
+      .col-2 {
+        flex: 100%;
+        margin-left: 0;
+      }
+
+      .col-1 {
+        .header {
+          font-size: 1.2rem;
+        }
+
+        .sub-header {
+          font-size: 1.8rem;
+        }
+      }
+
+      .col-2 {
+        .desc {
+          font-size: 1.1rem;
+        }
+
+        .sub-desc {
+          font-size: 0.95rem;
+        }
+      }
+    }
+
+    /* ---------- MAIN CONTENT ---------- */
+    .main-content {
+      .row {
+        flex-direction: column;
+      }
+
+      .col-1,
+      .col-2 {
+        flex: 100%;
+        margin-left: 0;
+      }
+
+      video {
+        max-width: 100%;
+        margin-bottom: 2rem;
+      }
+
+      .col-2 {
+        .d-flex {
+          align-items: flex-start;
+          text-align: left; // icons + text stay readable
+
+          img {
+            width: 32px;
+          }
+
+          .content-txt {
+            font-size: 1.1rem;
+          }
+        }
+
+        .careers-btn {
+          width: 100%; // nice mobile CTA
+          max-width: 280px;
+          margin: 1.5rem auto 0;
+        }
+      }
+    }
+  }
+}
+
+/* ---------- SMALL MOBILE ---------- */
+@media (max-width: 480px) {
+  .careers-section {
+    .desc-content {
+      .col-1 {
+        .sub-header {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .main-content {
+      .col-2 {
+        .d-flex .content-txt {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+
+
+// nextone
 .main {
   padding: 4rem 1rem;
   background: #f9faf9;
-}
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-}
 
 /* ---------- HEADER ---------- */
 .view-header {
@@ -593,7 +1041,6 @@
       font-weight: 600;
       letter-spacing: 1px;
       margin-bottom: 0.5rem;
-      
     }
 
     .section-title {
@@ -680,6 +1127,8 @@
     }
   }
 }
+}
+}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 992px) {
@@ -691,5 +1140,171 @@
 @media (max-width: 600px) {
   .view-content {
     grid-template-columns: 1fr;
+  }
+}
+
+
+
+// nextone
+.main-footer {
+  background: $footer-bg;
+  color: $white;
+  padding: 4rem 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .row {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  /* ---------- COL 1 : LOGO ---------- */
+  .col-1 {
+    flex: 0 0 20%;
+
+    img {
+      max-width: 180px;
+    }
+  }
+
+  /* ---------- COL 2 : LINKS ---------- */
+  .col-2 {
+    flex: 1;
+    display: flex;
+    gap: 3rem;
+
+    .list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        cursor: pointer;
+
+        &:hover {
+          color: #00a261;
+        }
+      }
+    }
+  }
+
+  /* ---------- COL 3 : INFO + SOCIAL ---------- */
+  .col-3 {
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* ---------- INFORMATION LIST ---------- */
+  .information {
+    .list ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        position: relative;
+        padding-left: 1.8rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0.2rem;
+          width: 14px;
+          height: 14px;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+
+        &:nth-child(1)::before {
+          background-image: url("/images/geo-alt-fill.svg");
+          filter: brightness(0) saturate(100%) invert(42%) sepia(96%)
+            saturate(405%) hue-rotate(95deg) brightness(90%) contrast(92%);
+        }
+
+        &:nth-child(2)::before {
+          background-image: url("/images/telephone-fill.svg");
+          filter: brightness(0) saturate(100%) invert(42%) sepia(96%)
+            saturate(405%) hue-rotate(95deg) brightness(90%) contrast(92%);
+        }
+
+        &:nth-child(3)::before {
+          background-image: url("/images/envelope-at-fill.svg");
+          filter: brightness(0) saturate(100%) invert(42%) sepia(96%)
+            saturate(405%) hue-rotate(95deg) brightness(90%) contrast(92%);
+        }
+
+        &:nth-child(4)::before {
+          background-image: url("/images/clock.svg");
+          filter: brightness(0) saturate(100%) invert(42%) sepia(96%)
+            saturate(405%) hue-rotate(95deg) brightness(90%) contrast(92%);
+        }
+      }
+    }
+  }
+
+  /* ---------- SOCIAL MEDIA ---------- */
+  .social-media {
+    display: flex;
+    gap: 2.5rem;
+
+    a img {
+      width: 24px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .main-footer {
+    .row {
+      flex-direction: column;
+    }
+
+    .col-2 {
+      flex-direction: column;
+    }
+
+    .col-3 {
+      align-items: flex-start;
+    }
+  }
+}
+
+
+// nextone
+.copyright-wrapper {
+  text-align: center;
+  padding: 1.5rem 0;
+  background-color: #1e1e1e;
+  .container {
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+    a {
+      padding: 0 1rem 0 1rem;
+      color: $header-bg;
+      text-decoration: none;
+      font-weight: 600;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
