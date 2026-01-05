@@ -189,11 +189,6 @@
     width: 18px;
     height: 18px;
     cursor: pointer;
-
-    /* SVG as background */
-    background-image: url("./images/search.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
     background-position: center;
 
     &:hover {
