@@ -86,16 +86,31 @@
 }
 .about.container {
   padding: 2rem 0;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+}
+.about.container .hamburger {
+  display: none;
+  cursor: pointer;
+}
+.about.container .hamburger img {
+  height: 3rem;
+  width: 2rem;
 }
 
 /* ---------- MAIN NAV ---------- */
 .main-nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .main-nav a {
   margin-right: 2rem;
+}
+.main-nav .nav-links-mobile {
+  display: none;
 }
 
 /* ---------- LOGO ---------- */
@@ -173,6 +188,29 @@
   background-color: rgb(253.7733333333, 187.5333333333, 35.4266666667);
 }
 
+@media screen and (max-width: 768px) {
+  .about.container .hamburger {
+    display: block;
+  }
+  .main-nav .nav-links {
+    display: none;
+  }
+  .main-nav .nav-links-mobile.active {
+    height: 17rem;
+    width: 88%;
+    position: fixed;
+    top: 14rem;
+    left: 1.5rem;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: white;
+  }
+  .main-nav .nav-links-mobile.active li {
+    margin-left: 10px;
+  }
+}
 .hero {
   position: relative;
   width: 100%;
@@ -823,6 +861,13 @@
   /* ---------- CONTENT GRID ---------- */
   /* ---------- BLOG CARD ---------- */
 }
+.main .container .view-row {
+  width: 100%;
+  display: block;
+}
+.main .container .field-content {
+  display: block;
+}
 .main .container .view-header {
   display: flex;
   justify-content: center;
@@ -842,15 +887,11 @@
 .main .container .view-header .header .section-title {
   font-size: 3rem;
   font-weight: 700;
-  margin: 0;
 }
 .main .container .view-content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-}
-.main .container .view-row {
-  height: 100%;
 }
 .main .container .post-wrapper {
   background: #fff;
@@ -870,7 +911,6 @@
   height: 220px;
   -o-object-fit: cover;
      object-fit: cover;
-  display: block;
 }
 .main .container .content-wrapper {
   padding: 1.5rem;
@@ -903,19 +943,16 @@
   color: #00a261;
   text-decoration: none;
 }
-.main .container .content-wrapper .read-more a:hover {
-  text-decoration: underline;
-}
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 992px) {
-  .view-content {
-    grid-template-columns: repeat(2, 1fr);
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 768px) {
+  .main .container .view-content {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1.5rem;
   }
-}
-@media (max-width: 600px) {
-  .view-content {
-    grid-template-columns: 1fr;
+  .main .container .view-row {
+    width: 100%;
   }
 }
 .main-footer {

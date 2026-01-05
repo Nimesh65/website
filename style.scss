@@ -103,18 +103,34 @@
 }
 
 
+
 // nextone
 .about.container {
   padding: 2rem 0;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    img {
+      height: 3rem;
+      width: 2rem;
+    }
+  }
 }
 
 /* ---------- MAIN NAV ---------- */
 .main-nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   a {
     margin-right: 2rem;
+  }
+  .nav-links-mobile {
+    display: none;
   }
 }
 
@@ -201,7 +217,33 @@
   }
 }
 
-
+@media screen and (max-width: 768px) {
+  .about.container{
+    .hamburger {
+      display: block;
+    }
+    }
+    .main-nav {
+      .nav-links {
+        display: none;
+    }
+    .nav-links-mobile.active {
+      height: 17rem;
+      width: 88%;
+      position: fixed;
+      top: 14rem;
+      left: 1.5rem;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      background-color: white;
+      li {
+        margin-left: 10px;
+      }
+    }
+  }
+}
 
 // nextone
 .hero {
@@ -297,7 +339,6 @@
     font-size: 1rem;
   }
 }
-
 
 // nextone
 .services {
@@ -507,7 +548,7 @@
     padding: 3rem 1rem;
 
     .row {
-      flex-direction: column;   // ✅ stack image + text
+      flex-direction: column; // ✅ stack image + text
       text-align: center;
     }
 
@@ -551,7 +592,6 @@
     }
   }
 }
-
 
 // nextone
 .portal {
@@ -680,7 +720,7 @@
     padding: 3rem 1rem;
 
     .row {
-      flex-direction: column;   // ✅ stack image + content
+      flex-direction: column; // ✅ stack image + content
       text-align: center;
     }
 
@@ -744,7 +784,6 @@
     }
   }
 }
-
 
 // nextone
 .careers-section {
@@ -1014,136 +1053,131 @@
   }
 }
 
-
-
 // nextone
 .main {
   padding: 4rem 1rem;
   background: #f9faf9;
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-
-/* ---------- HEADER ---------- */
-.view-header {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 3rem;
-
-  .header {
-    max-width: 600px;
-
-    h6 {
-      font-size: 1rem;
-      color: #00a261;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    .view-row {
+      width: 100%;
+      display: block;
     }
 
-    .section-title {
-      font-size: 3rem;
-      font-weight: 700;
-      margin: 0;
+    .field-content {
+      display: block; // fixes span inline issue
     }
-  }
-}
 
-/* ---------- CONTENT GRID ---------- */
-.view-content {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
+    /* ---------- HEADER ---------- */
+    .view-header {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 3rem;
 
-/* ---------- BLOG CARD ---------- */
-.view-row {
-  height: 100%;
-}
+      .header {
+        max-width: 600px;
 
-.post-wrapper {
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+        h6 {
+          font-size: 1rem;
+          color: #00a261;
+          font-weight: 600;
+          letter-spacing: 1px;
+          margin-bottom: 0.5rem;
+        }
 
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
-  }
-}
-
-.image-wrapper {
-  img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-  }
-}
-
-.content-wrapper {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-
-  .date {
-    font-size: 0.85rem;
-    color: $header-bg;
-    margin-bottom: 0.5rem;
-  }
-
-  .title a {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #222;
-    text-decoration: none;
-
-    &:hover {
-      color: #00a261;
+        .section-title {
+          font-size: 3rem;
+          font-weight: 700;
+        }
+      }
     }
-  }
 
-  .description {
-    margin: 1rem 0;
-    color: #555;
-    line-height: 1.6;
-    flex-grow: 1;
-  }
+    /* ---------- CONTENT GRID ---------- */
+    .view-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
 
-  .read-more a {
-    font-weight: 600;
-    color: #00a261;
-    text-decoration: none;
+    /* ---------- BLOG CARD ---------- */
+    .post-wrapper {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    &:hover {
-      text-decoration: underline;
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+      }
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .content-wrapper {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .date {
+        font-size: 0.85rem;
+        color: $header-bg;
+        margin-bottom: 0.5rem;
+      }
+
+      .title a {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #222;
+        text-decoration: none;
+
+        &:hover {
+          color: #00a261;
+        }
+      }
+
+      .description {
+        margin: 1rem 0;
+        color: #555;
+        line-height: 1.6;
+        flex-grow: 1;
+      }
+
+      .read-more a {
+        font-weight: 600;
+        color: #00a261;
+        text-decoration: none;
+      }
     }
   }
 }
-}
-}
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 768px) {
+  .main {
+    .container {
+      .view-content {
+        display: flex !important;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 992px) {
-  .view-content {
-    grid-template-columns: repeat(2, 1fr);
+      .view-row {
+        width: 100%;
+      }
+    }
   }
 }
-
-@media (max-width: 600px) {
-  .view-content {
-    grid-template-columns: 1fr;
-  }
-}
-
-
 
 // nextone
 .main-footer {
@@ -1284,7 +1318,6 @@
     }
   }
 }
-
 
 // nextone
 .copyright-wrapper {
